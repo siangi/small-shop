@@ -1,11 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import BasketItem from "./BasketItem";
 import Checkoutform from "./Checkoutform";
 function Basket(props) {
-    // function calculateTotal{
-
-    // }
-
+    const [inCheckout, setInCheckout] = useState(false);
     return (
         <div className="basket">
             <h2>Basket</h2>
@@ -24,7 +21,8 @@ function Basket(props) {
                     </strong>
                 </h4>
             ) : null}
-            <Checkoutform></Checkoutform>
+            {props.items.length > 0 && <button onClick={() => setInCheckout(true)}>go to Checkout</button>}
+            {inCheckout && <Checkoutform></Checkoutform>}
         </div>
     );
 }
