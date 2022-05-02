@@ -8,7 +8,7 @@ function Basket(props) {
             <h2>Basket</h2>
             <ul>
                 {props.items.map((item) => (
-                    <BasketItem key={item.id} changeAmount={props.changeAmount} {...item}></BasketItem>
+                    <BasketItem key={item.id} deleteItem={props.deleteItem} changeAmount={props.changeAmount} {...item}></BasketItem>
                 ))}
             </ul>
             {props.items.length > 0 ? (

@@ -8,6 +8,7 @@ function BasketItem(props) {
                 <button onClick={() => props.changeAmount(props.id, false)}>-</button>
                 <p>{props.amount}</p>
                 <button onClick={() => props.changeAmount(props.id, true)}>+</button>
+                <button onClick={() => props.deleteItem(props.id)}>x</button>
             </div>
             <span>{(props.price * props.amount).toFixed(2)} Kr.</span>
         </li>

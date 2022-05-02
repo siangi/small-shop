@@ -78,7 +78,7 @@ function App() {
             <Navigation></Navigation>
             <div className="split-container">
                 <ArticleList addToBasket={addToBasket} articles={articles} nextPage={nextPage}></ArticleList>
-                <Basket items={basket} changeAmount={changeBasketAmount}></Basket>
+                <Basket items={basket} deleteItem={removeFromBasket} changeAmount={changeBasketAmount}></Basket>
             </div>
         </div>
     );
