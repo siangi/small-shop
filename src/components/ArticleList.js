@@ -1,16 +1,21 @@
 import React from "react";
 import Article from "./Article";
+import { Pagination } from "antd";
 
 function ArticleList(props) {
+    function handlePageChange(page) {
+        props.pageChange(page);
+    }
+
     return (
-        <div className="article-list">
+        <div className="article-list-container">
             <h2>Articles</h2>
-            <ul>
+            <ul className="article-list">
                 {props.articles.map((article) => (
                     <Article key={article.id} {...article} addToBasket={props.addToBasket}></Article>
                 ))}
             </ul>
-            <button onClick={props.nextPage}>Load More</button>
+            <Pagination defaultCurrent={1} total={100} onChange={handlePageChange}></Pagination>
         </div>
     );
 }

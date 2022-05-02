@@ -1,5 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import { Button, Input, Radio } from "antd";
+
+const payMethodOptions = [
+    { label: "Mobile Pay", value: "mobile-pay" },
+    { label: "Credit Card", value: "credit-card" },
+    { label: "Bank Transfer", value: "bank-transfer" },
+];
 
 function Checkoutform() {
     const [method, setMethod] = useState("");
@@ -15,9 +22,9 @@ function Checkoutform() {
                 <fieldset>
                     <legend>Contact Information</legend>
                     <label htmlFor="full-name">Full Name</label>
-                    <input type="text" name="full-name" id="full-name" required />
+                    <Input type="text" name="full-name" id="full-name" required />
                     <label htmlFor="e-mail">E-Mail</label>
-                    <input type="email" name="e-mail" id="e-mail" required />
+                    <Input type="email" name="e-mail" id="e-mail" required />
                 </fieldset>
                 <fieldset>
                     <legend>Payment Method</legend>
@@ -33,6 +40,7 @@ function Checkoutform() {
                         <input type="radio" name="pay-method" id="bank-transfer" value="bank-transfer" onChange={() => setMethod("bank-transfer")} required />
                         Bank Transfer
                     </label>
+                    <Radio.Group options={payMethodOptions} optionType="button" buttonStyle="solid" />
                     {method === "mobile-pay" && (
                         <>
                             <h3>Mobile Pay Number</h3>
@@ -43,17 +51,17 @@ function Checkoutform() {
                         <>
                             <label htmlFor="card-number">
                                 Credit Card Number
-                                <input type="text" name="card-number" id="card-number" required />
+                                <Input name="card-number" id="card-number" required />
                             </label>
 
                             <label htmlFor="expiry-date">
                                 Expiration Date
-                                <input type="text" name="expiry-date" id="expiry-date" required />
+                                <Input name="expiry-date" id="expiry-date" required />
                             </label>
 
                             <label htmlFor="ccv">
                                 CCV
-                                <input type="text" name="ccv" id="ccv" required />
+                                <Input name="ccv" id="ccv" required />
                             </label>
                         </>
                     )}
@@ -61,25 +69,23 @@ function Checkoutform() {
                         <>
                             <label htmlFor="address">
                                 Street & number
-                                <input type="address"></input>
+                                <Input name="address" id="address" />
                             </label>
 
                             <label htmlFor="zip-code">
                                 Zip Code
-                                <input type="text" name="zip-code" id="zip-code" />
+                                <Input name="zip-code" id="zip-code" />
                             </label>
 
                             <label htmlFor="city-name">
                                 City Name
-                                <input type="text" name="city" id="city" />
+                                <Input name="city" id="city" />
                             </label>
-                            <p>
-                                The bill will be sent to your e-mail <address></address>
-                            </p>
+                            <p>The bill will be sent to your e-mail address</p>
                         </>
                     )}
                 </fieldset>
-                <button type="submit">Check out</button>
+                <Button type="primary">Check out</Button>
             </form>
         </div>
     );

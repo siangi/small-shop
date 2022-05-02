@@ -1,12 +1,15 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import { Layout } from "antd";
 import ArticleList from "./components/ArticleList";
 import Navigation from "./components/Navigation";
 import Basket from "./components/Basket";
 
+const { Header, Sider, Content } = Layout;
+
 function App() {
     const [articles, setArticles] = useState([]);
-    const [count, setCount] = useState(0);
+    const [page, setPage] = useState(1);
     const [basket, setBasket] = useState([]);
 
     function addToBasket(id) {
@@ -59,27 +62,31 @@ function App() {
         });
     }
 
-    function nextPage() {
-        setCount((oldCount) => oldCount + 1);
-    }
-
     useEffect(() => {
-        fetch(`https://kea-alt-del.dk/t7/api/products?start=${count * 10}&limit=10`)
+        fetch(`https://kea-alt-del.dk/t7/api/products?start=${(page - 1) * 12}&limit=12`)
             .then((response) => response.json())
             .then((data) => {
                 setArticles((previousState) => {
-                    return previousState.concat(data);
+                    return data;
                 });
             });
-    }, [count]);
+    }, [page]);
 
     return (
         <div className="App">
-            <Navigation></Navigation>
-            <div className="split-container">
-                <ArticleList addToBasket={addToBasket} articles={articles} nextPage={nextPage}></ArticleList>
-                <Basket items={basket} deleteItem={removeFromBasket} changeAmount={changeBasketAmount}></Basket>
-            </div>
+            <Layout>
+                <Header>
+                    <Navigation></Navigation>
+                </Header>
+                <Layout>
+                    <Content>
+                        <ArticleList addToBasket={addToBasket} articles={articles} pageChange={setPage}></ArticleList>
+                    </Content>
+                    <Sider theme="dark">
+                        <Basket items={basket} deleteItem={removeFromBasket} changeAmount={changeBasketAmount}></Basket>
+                    </Sider>
+                </Layout>
+            </Layout>
         </div>
     );
 }

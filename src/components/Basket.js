@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import BasketItem from "./BasketItem";
 import Checkoutform from "./Checkoutform";
+import { Button } from "antd";
+
 function Basket(props) {
     const [inCheckout, setInCheckout] = useState(false);
     return (
@@ -21,7 +23,11 @@ function Basket(props) {
                     </strong>
                 </h4>
             ) : null}
-            {props.items.length > 0 && <button onClick={() => setInCheckout(true)}>go to Checkout</button>}
+            {props.items.length > 0 && !inCheckout && (
+                <Button type="primary" onClick={() => setInCheckout(true)}>
+                    go to Checkout
+                </Button>
+            )}
             {inCheckout && <Checkoutform></Checkoutform>}
         </div>
     );

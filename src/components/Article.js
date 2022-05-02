@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "antd";
 
 function Article(props) {
     function handleBuy() {
@@ -10,7 +11,11 @@ function Article(props) {
             <article>
                 <h3>{props.productdisplayname}</h3>
                 <p>{props.price} Kr</p>
-                {props.addToBasket != null ? <button onClick={handleBuy}>Add to basket</button> : null}
+                {props.addToBasket != null ? (
+                    <Button type="primary" onClick={handleBuy}>
+                        Add to basket
+                    </Button>
+                ) : null}
             </article>
         </li>
     );
