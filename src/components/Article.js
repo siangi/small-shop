@@ -7,9 +7,11 @@ function Article(props) {
 
     return (
         <li className="article">
-            <h3>{props.productdisplayname}</h3>
-            <p>{props.price} Kr</p>
-            {props.addToBasket != null ? <button onClick={handleBuy}>Add to basket</button> : null}
+            <article>
+                <h3>{props.productdisplayname}</h3>
+                <p>{props.price} Kr</p>
+                {props.addToBasket != null ? <button onClick={handleBuy}>Add to basket</button> : null}
+            </article>
         </li>
     );
 }
