@@ -1,8 +1,12 @@
-@import '~antd/dist/antd.css';
+@import '~antd/dist/antd.dark.css';
 
 *{
     margin: 0;
     padding:0;
+}
+
+img{
+    max-width: 100%;
 }
 
 
@@ -23,20 +27,18 @@ label{
 
 .article-list{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.basket{
+    position: sticky;
+    top: 0.5rem;
+    padding: 1rem;
 }
 
 
 .amount-group{
     display: flex;
     flex-direction: row;
-}
-
-.ant-layout-sider-dark,
-.ant-layout-sider-dark h1,
-.ant-layout-sider-dark h2, 
-.ant-layout-sider-dark h3, 
-.ant-layout-sider-dark h4,
-.ant-layout-sider-dark button{
-    color: white;
 }
