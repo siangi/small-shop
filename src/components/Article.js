@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../controls/Button";
 
 function Article(props) {
     function handleBuy() {
@@ -7,10 +8,11 @@ function Article(props) {
 
     return (
         <li className="article">
-            <article>
-                <h3>{props.productdisplayname}</h3>
+            <article className="h-full flex flex-col justify-between">
+                <img src={`https://kea-alt-del.dk/t7/images/webp/640/${props.id}.webp`} alt=""></img>
+                <h3 className="text-lg font-bold">{props.productdisplayname}</h3>
                 <p>{props.price} Kr</p>
-                {props.addToBasket != null ? <button onClick={handleBuy}>Add to basket</button> : null}
+                {props.addToBasket != null ? <Button onClick={handleBuy} text="Add to basket" /> : null}
             </article>
         </li>
     );
